@@ -15,27 +15,36 @@ import java.util.Scanner;
  */
 public class ProductManager {
     private Scanner scanner = new Scanner(System.in);
-    
-    
-    public Product createProduct(){
-        return null;
+    public Product createProduct(string name) {
+        if(product.equals(product)) {
+        System.out.println("---- Добавить товар ----");
+        System.out.println("---- Название товара ----");
+        String name = scanner.nextLine();
+        System.out.println("---- Сколько вы хотите у нас купить? ----");
+        int quality = scanner.nextInt();
+        System.out.println("Введите сюда цену: ");
+        int price = scanner.nextLine();
+        return product;
+        }
         
     }
-    
-    public void printListProducts(List<Product> listproducts) {
-        System.out.println("---- Список наших товаров ----");
-        for (int i = 0; i < listProduct.size(); i++) {
-            
-            
-        }
+
+    public Product createProduct() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void addProductToList(Product product, List<Product> listProducts) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void printListProduct(List<Product> listProducts) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+
+
+
+
+
     
 }
