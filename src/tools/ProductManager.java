@@ -15,31 +15,43 @@ import java.util.Scanner;
  */
 public class ProductManager {
     private Scanner scanner = new Scanner(System.in);
-    public Product createProduct(string name) {
-        if(product.equals(product)) {
-        System.out.println("---- Добавить товар ----");
-        System.out.println("---- Название товара ----");
-        String name = scanner.nextLine();
-        System.out.println("---- Сколько вы хотите у нас купить? ----");
-        int quality = scanner.nextInt();
-        System.out.println("Введите сюда цену: ");
-        int price = scanner.nextLine();
-        return product;
-        }
-        
-    }
 
     public Product createProduct() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           scanner.nextLine();
+           System.out.println("Введите имя товара: ");
+           String name = scanner.nextLine();
+           System.out.println("Введите кол-во: ");
+           int quantity = scanner.nextInt();
+           System.out.println("Введиет цену товара: ");
+           int price = scanner.nextInt();
+           Product product = new Product(name, price, quantity);  
+           return product;
     }
 
     public void addProductToList(Product product, List<Product> listProducts) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listProducts.add(product);
+        SaveToFile saveToFile = new SaveToFile();
+        saveToFile.saveToFile(listProducts, "listProduct");
     }
 
-    public void printListProduct(List<Product> listProducts) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void printListProduct(List<Product> listProducts) { 
+        for (int i = 0; i < listProducts.size(); i++) {
+            if(listProducts.get(i) != null){
+                Product product = listProducts.get(i);
+                System.out.printf("%d. %s %s%n"
+                    ,i+1
+                    ,product.getName()
+                    ,product.getPrice()
+                    ,product.getQuantity()
+            );
+                      
+
+        }
     }
+}
+
+
+
     
 
 

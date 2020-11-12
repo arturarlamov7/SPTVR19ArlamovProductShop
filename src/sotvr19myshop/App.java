@@ -5,11 +5,14 @@
  */
 package sotvr19myshop;
 
+import entity.Customer;
 import entity.Product;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import tools.PersonManager;
 import tools.ProductManager;
+import tools.SaveToFile;
 
 /**
  *
@@ -18,9 +21,18 @@ import tools.ProductManager;
 public class App {
     private Scanner scanner = new Scanner(System.in);
     
-    private  List<Product> listProducts = new ArrayList<>(); 
+    private  List<Product> listProducts = new ArrayList<>();
+    private  List<Customer> listPersons = new ArrayList<>();
     
     private ProductManager productManager = new ProductManager();
+    private PersonManager personManager = new PersonManager();
+    private Product product;
+    
+    public App() {
+        SaveToFile saveToFile = new SaveToFile();
+        this.listPersons = saveToFile.loadFromFile("listPersons");
+        this.listProducts = saveToFile.loadFromFile("listProduct");
+    }
     
     public void run() {
         System.out.println("---- Продуктовый магазин ----");
@@ -33,7 +45,7 @@ public class App {
             System.out.println("3. Добавить покупателя");
             System.out.println("4. Список покупателей");
             System.out.println("5. Купить товар");
-            System.out.println("Выберите задачу:");
+            System.out.print("Выберите задачу:");
             String task = scanner.nextLine();
             switch (task) {
                 case "0":
@@ -43,7 +55,7 @@ public class App {
             //----------------------------------------------------------------//        
                 case "1":
                     System.out.println("---- Добавить товар ----");
-                    Product product = productManager.createProduct();
+                    Product product = productManager.createProduct();            
                     productManager.addProductToList(product, listProducts);
                     break;
             //----------------------------------------------------------------//      
@@ -54,14 +66,24 @@ public class App {
             //----------------------------------------------------------------//
                 case "3":
                     System.out.println("---- Добавить покупателя ----");
+                    Customer customer = personManager.createCustomer(); 
+                    personManager.addPersonToList(customer, listPersons);
+                    break;
+            //----------------------------------------------------------------//
+                case "4":
+                    System.out.println("---- Список покупателей ----");
+                    personManager.printListProduct(listPersons);
+                    break;
+            //----------------------------------------------------------------//       
+                case "5":
+                    System.out.println("---- Купить товар ----");
                     
                     break;
-                case "4":
-                    break;
-                case "5":
-                    break;
-            }
-            
+            //----------------------------------------------------------------//
+                default:
+                    System.out.println("Нет такой задачи. Повторите попытку!");
+            //----------------------------------------------------------------//        
+            }         
         }while(repeat);      
     }
     
