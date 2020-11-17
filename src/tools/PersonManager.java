@@ -17,39 +17,35 @@ import java.util.Scanner;
 public class PersonManager {
     private Scanner scanner = new Scanner(System.in);
    
-    public Customer createCustomer() {
-        
-        System.out.println("Введите имя: ");
+    public Customer createCustomer() {       
+        System.out.print("Введите имя: ");
         String firstname = scanner.nextLine();
-        System.out.println("Фамилия: ");
+        System.out.print("Фамилия: ");
         String lastname = scanner.nextLine();
-        System.out.println("Телефон: ");
+        System.out.print("Телефон: ");
         String phone = scanner.nextLine();
-        System.out.println("Ваш кошелёк: ");
+        System.out.print("Ваш кошелёк: ");
         int money = scanner.nextInt();
-        Customer customer = new Customer();
+        scanner.nextLine();
+        Customer customer = new Customer( firstname,  lastname,  phone, money);
         return customer;             
     }
 
     public void addPersonToList(Customer customer, List<Customer> listPersons) {
         listPersons.add(customer);
         SaveToFile saveToFile = new SaveToFile();
-        saveToFile.saveToFile(listPersons, "listProduct");
+        saveToFile.saveToFile(listPersons, "listPersons");
+        System.out.println(customer.getFirtname());
+        
     }
     
     public void printListProduct(List<Customer> listPersons) { 
         for (int i = 0; i < listPersons.size(); i++) {
             if(listPersons.get(i) != null){
                 Customer customer = listPersons.get(i);
-                System.out.printf("%d. %s %s%n"
-                    ,i+1
-                    ,customer.getFirtname()
-                    ,customer.getLastname()
-                    ,customer.getPhone()
-                    ,customer.getMoney()
-            );
+                System.out.println(
+                    (i+1)+". " +customer.getFirtname()+" "+ customer.getLastname()+ " "+ customer.getPhone()+" "+customer.getMoney());
                       
-
         }
     }     
 }

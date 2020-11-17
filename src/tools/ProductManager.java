@@ -17,13 +17,14 @@ public class ProductManager {
     private Scanner scanner = new Scanner(System.in);
 
     public Product createProduct() {
-           scanner.nextLine();
-           System.out.println("Введите имя товара: ");
+          
+           System.out.print("Введите имя товара: ");
            String name = scanner.nextLine();
-           System.out.println("Введите кол-во: ");
+           System.out.print("Введите кол-во: ");
            int quantity = scanner.nextInt();
-           System.out.println("Введиет цену товара: ");
+           System.out.print("Введиет цену товара: ");
            int price = scanner.nextInt();
+           scanner.nextLine();
            Product product = new Product(name, price, quantity);  
            return product;
     }

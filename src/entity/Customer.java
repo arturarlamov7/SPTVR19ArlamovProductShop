@@ -6,6 +6,8 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -17,7 +19,7 @@ public class Customer implements Serializable{
     private String lastname;
     private String phone;
     private int money;
-    
+    private List<Product> listProduct = new ArrayList<>();
 
     public Customer() {
     }
