@@ -17,6 +17,7 @@ public class Customer implements Serializable{
     private String lastname;
     private String phone;
     private int money;
+    
 
     public Customer() {
     }

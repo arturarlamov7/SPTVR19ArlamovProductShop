@@ -77,6 +77,17 @@ public class App {
             //----------------------------------------------------------------//       
                 case "5":
                     System.out.println("---- Купить товар ----");
+                    productManager.printListProduct(listProducts);
+                    System.out.println("Выберите товар: ");
+                    int choose_product = scanner.nextInt();
+                    personManager.printListProduct(listPersons);
+                    System.out.println("Выберите покупателя: ");
+                    int choose_customer = scanner.nextInt();
+                    if(listPersons.get(choose_customer).getMoney() >= listProducts.get(choose_product).getPrice()) {
+                        listPersons.get(choose_customer).setMoney(listPersons.get(choose_customer).getMoney() - listProducts.get(choose_product).getPrice());
+                        
+                        listProducts.remove(choose_product);
+                    }
                     
                     break;
             //----------------------------------------------------------------//
